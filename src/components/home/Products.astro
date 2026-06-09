@@ -1,0 +1,371 @@
+---
+import cnc from '../../assets/products/cong-nghe-cao.jpg';
+import tbyt from '../../assets/products/thiet-bi-y-te.jpg';
+import tbgd from '../../assets/products/thiet-bi-giao-duc.jpg';
+import tbdn from '../../assets/products/thiet-bi-day-nghe.jpg';
+import tbvp from '../../assets/products/thiet-bi-van-phong.jpg';
+import tbnt from '../../assets/products/thiet-bi-noi-that.jpg';
+import tban from '../../assets/products/thiet-bi-an-ninh.jpg';
+import tbvt from '../../assets/products/thiet-bi-vien-thong.jpg';
+import sldl from '../../assets/products/so-hoa-va-luu-tru-du-lieu.jpg';
+import nlmt from '../../assets/products/nang-luong-mat-troi.jpg';
+import hbdd from '../../assets/products/ho-boi-di-dong.jpg';
+const products = [
+  { title: "CÔNG NGHỆ CAO", image: cnc.src },
+  { title: "THIẾT BỊ Y TẾ", image: tbyt.src },
+  { title: "THIẾT BỊ GIÁO DỤC", image: tbgd.src },
+  { title: "THIẾT BỊ DẠY NGHỀ", image: tbdn.src },
+  { title: "THIẾT BỊ VĂN PHÒNG", image: tbvp.src },
+  { title: "THIẾT BỊ NỘI THẤT", image: tbnt.src },
+  { title: "THIẾT BỊ AN NINH", image: tban.src },
+  { title: "THIẾT BỊ VIỄN THÔNG", image: tbvt.src },
+  { title: "SỐ HÓA & LƯU TRỮ DỮ LIỆU", image: sldl.src },
+  { title: "NĂNG LƯỢNG MẶT TRỜI", image: nlmt.src },
+  { title: "HỒ BƠI DI ĐỘNG", image: hbdd.src }
+];
+---
+
+<section class="products" id="products">
+    <div class="products__header">
+        <span class="products__label">PRODUCTS</span>
+        <a href="products" class="products__more">VIEW ALL PRODUCTS</a>
+    </div>
+    <div class="products__slider-wrapper">
+      <div class="products__slider" id="productSlider">
+        {products.map((item) => (
+          <div class="product-card">
+            <img class="product-card__image" src={item.image} alt={item.title} />
+            <div class="product-card__overlay"></div> 
+            <div class="product-card__content">
+              <h3 class="product-card__title">{item.title}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+</section>
+
+<style>
+    .products {
+        background: #BCB09F;
+        overflow: hidden;
+        user-select: none;
+        text-align: justify;
+    }
+
+    /* Header */
+    .products__header {
+        padding: 80px 40px 0px;
+        margin-bottom: 40px;
+
+        font-family: var(--font-family-display);
+        font-weight: var(--font-weight-semibold);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .products__label {
+        font-size: 20px;
+        color: black;
+    }
+    .products__more {
+        font-size: 20px;
+        color: #1a1714;
+        text-decoration: none;
+
+        padding-bottom: 4px;            
+        background-image: linear-gradient(#1a1714, #1a1714);
+        background-position: 50% 100%; 
+        background-repeat: no-repeat;   
+        background-size: 100% 1.5px;
+        transition: background-size 0.4s ease;
+    }
+    .products__more:hover {
+        background-size: 0% 1.5px;
+    }
+
+    /* Slider */
+    .products__slider-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 80px;
+    }
+    .products__slider {
+        display: flex;
+        gap: 24px;
+        padding: 20px 5vw 20px 5vw;
+        overflow-x: scroll;
+        width: 100%;
+        box-sizing: border-box;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        cursor: grab;
+    }
+    .products__slider::-webkit-scrollbar {
+        display: none;
+    }
+    .products__slider:active {
+        cursor: grabbing;
+    }
+
+    /* Card */
+    .product-card {
+        flex: 0 0 calc((100% - 10vw - 24px * 2) / 3);
+        height: 380px;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;   /* ← quan trọng */
+        user-select: none;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.6s ease,
+                    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .product-card.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .product-card.is-visible:hover {
+        transform: translateY(-8px);
+    }
+
+    /* Image */
+    .product-card__image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .product-card__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.65) 0%,
+            rgba(0, 0, 0, 0.15) 50%,
+            transparent 100%
+        );
+        transition: background 1s ease;
+    }
+    .product-card:hover .product-card__overlay {
+        background: rgba(30, 30, 30, 0.65);
+    }
+
+    /* Content */
+    .product-card__content {
+        position: absolute;
+        inset: 0;
+        padding: 24px 24px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;  
+        z-index: 1;
+    }
+    .product-card__title {
+        font-family: var(--font-family-body);
+        font-size: 20px;             
+        line-height: 1.3;
+        margin: 0;
+        color: #fff;
+        letter-spacing: 0.08em;     
+        text-transform: uppercase;  
+        text-shadow: 0 1px 4px rgba(0,0,0,0.4);  
+        transform: translateY(10px);
+        transition: transform 0.9s ease, letter-spacing 0.7s ease;
+    }
+    .product-card.is-visible:hover .product-card__title {
+        transform: translateY(0);
+        letter-spacing: 0.12em;
+        transition: transform 0.8s ease, letter-spacing 0.77s ease; 
+    }
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('productSlider');
+        if (!slider) return;
+
+
+        let currentIndex = 0;
+        let isUserInteracting = false;
+        let autoScrollTimer: number | undefined;
+        let resumeTimer: number | undefined;
+
+        const originalCards = Array.from(
+        slider.querySelectorAll('.product-card')
+        ) as HTMLElement[];
+        const total = originalCards.length;
+
+        originalCards.forEach((card) => {
+        slider.appendChild(card.cloneNode(true));
+        });
+
+        [...originalCards].reverse().forEach((card) => {
+        slider.insertBefore(card.cloneNode(true), slider.firstChild);
+        });
+
+        slider.querySelectorAll('.product-card').forEach((card) => {
+            card.classList.add('is-visible');
+        });
+        const getClosestIndex = (): number => {
+            const cards = slider.querySelectorAll('.product-card') as NodeListOf<HTMLElement>;
+            let closestIndex = 0;
+            let minDist = Infinity;
+
+            for (let i = 0; i < total; i++) {
+            const targetLeft = getCenteredScrollLeft(i);
+            const dist = Math.abs(slider.scrollLeft - targetLeft);
+            if (dist < minDist) {
+                minDist = dist;
+                closestIndex = i;
+            }
+            }
+            return closestIndex;
+        };
+
+        const getCenteredScrollLeft = (index: number): number => {
+            const cards = slider.querySelectorAll('.product-card') as NodeListOf<HTMLElement>;
+            const targetIndex = total + index;
+            const card = cards[targetIndex];
+
+            if (!card) return 0;
+
+            const sliderPaddingLeft = parseFloat(getComputedStyle(slider).paddingLeft);
+            const sliderPaddingRight = parseFloat(getComputedStyle(slider).paddingRight);
+            const availableWidth = slider.clientWidth - sliderPaddingLeft - sliderPaddingRight;
+
+            return card.offsetLeft - sliderPaddingLeft - (availableWidth - card.offsetWidth) / 2;
+        };
+
+        const ease = (t: number): number =>
+            t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+        const smoothScrollTo = (
+            targetLeft: number,
+            duration = 600,
+            onDone?: () => void
+        ) => {
+            const start = slider.scrollLeft;
+            const distance = targetLeft - start;
+            const startTime = performance.now();
+
+            const step = (now: DOMHighResTimeStamp) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            slider.scrollLeft = start + distance * ease(progress);
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                onDone?.();
+            }
+            };
+
+            requestAnimationFrame(step);
+        };
+
+        const init = () => {
+            slider.scrollLeft = getCenteredScrollLeft(0);
+        };
+
+        const goToNext = () => {
+            const nextIndex = currentIndex + 1;
+
+            if (nextIndex >= total) {
+            smoothScrollTo(getCenteredScrollLeft(nextIndex), 600, () => {
+                currentIndex = 0;
+                slider.scrollLeft = getCenteredScrollLeft(0);
+            });
+            } else {
+            currentIndex = nextIndex;
+            smoothScrollTo(getCenteredScrollLeft(currentIndex), 900);
+            }
+        };
+
+        const startAutoScroll = () => {
+            if (autoScrollTimer !== undefined) {
+            clearInterval(autoScrollTimer);
+            }
+
+            autoScrollTimer = window.setInterval(() => {
+            if (!isUserInteracting) {
+                goToNext();
+            }
+            }, 4500);
+        };
+
+        const pauseAndResume = () => {
+            isUserInteracting = true;
+
+            if (autoScrollTimer !== undefined) {
+            clearInterval(autoScrollTimer);
+            }
+
+            if (resumeTimer !== undefined) {
+            clearTimeout(resumeTimer);
+            }
+
+            resumeTimer = window.setTimeout(() => {
+            isUserInteracting = false;
+            startAutoScroll();
+            }, 4000);
+        };
+        let isDown = false;
+        let startX = 0;
+        let scrollLeftStart = 0;
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;               // reset drag state
+            isUserInteracting = false;    // cho phép auto-scroll tiếp tục
+            startAutoScroll();            // khởi động lại ngay
+        });
+
+        slider.addEventListener('mousedown', (e: MouseEvent) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeftStart = slider.scrollLeft;
+            pauseAndResume();
+        });
+
+        slider.addEventListener('mouseup', () => {
+            if (!isDown) return;
+            isDown = false;
+
+            // Snap về card gần nhất và sync currentIndex
+            currentIndex = getClosestIndex();
+            smoothScrollTo(getCenteredScrollLeft(currentIndex), 500);
+        });
+
+        slider.addEventListener('mousemove', (e: MouseEvent) => {
+            if (!isDown) return;
+
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            slider.scrollLeft = scrollLeftStart - (x - startX) * 1.5;
+        });
+
+        slider.addEventListener('touchstart', pauseAndResume, { passive: true });
+
+        slider.addEventListener('touchend', () => {
+            currentIndex = getClosestIndex();
+            smoothScrollTo(getCenteredScrollLeft(currentIndex), 300);
+        }, { passive: true });
+        
+        slider.addEventListener('mouseenter', () => {
+            isUserInteracting = true;
+            clearInterval(autoScrollTimer);
+        });
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                init();
+                startAutoScroll();
+            });
+        });
+    });
+</script>

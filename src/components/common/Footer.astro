@@ -1,0 +1,138 @@
+---
+import Logo from '../../assets/logo/logo.png'
+---
+
+<footer class="footer">
+    <div class="footer__top">
+        <div class="footer__logo">
+            <a href="/" aria-label="Nam Phương Home">
+        <img src={Logo.src} alt="Nam Phương" />
+    </a>
+        </div>
+        <div class="footer__headline">Let's work together</div>
+    </div>
+
+    <div class="footer__bottom">
+        <div class="footer__copy">
+            All rights reserved © 2025–2026 Nam Phương<br />
+            Design: AG Design Agency | Development: Lab21
+        </div>
+
+        <nav class="footer__nav" aria-label="Footer navigation">
+            <a href="/about">About us</a>
+            <a href="/services">Services</a>
+            <a href="/projects">Projects</a>
+            <a href="/perspectives">Perspectives</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms & Conditions</a>
+            <a href="/cookies">Cookie Policy</a>
+        </nav>
+
+        <div class="footer__address">
+            Aiantos 4<br />
+            Vrilissia, 15235<br />
+            +30 210 613 1174<br />
+            <a href="mailto:info@namphuong.vn">info@namphuong.vn</a>
+        </div>
+
+        <div class="footer__social">
+            <a href="#">Facebook</a>
+            <a href="#">X</a>
+            <a href="#">Instagram</a>
+            <a href="#">Youtube</a>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        background: #1a1a1a;
+        color: #ffffff;
+        padding: 60px 48px 40px;
+        font-family: var(--font-family-display);
+    }
+
+    .footer__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 60px;
+    }
+
+    .footer__logo img {
+        height: 56px;
+        width: auto;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+    }
+
+    .footer__headline {
+        font-size: 42px;
+        font-weight: 300;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+        line-height: 1.1;
+        text-align: right;
+        flex: 1;
+        padding-left: 40px;
+    }
+
+    .footer__bottom {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        align-items: start;
+    }
+
+    .footer__copy {
+        font-size: 12px;
+        color: #aaaaaa;
+        line-height: 1.8;
+    }
+
+    .footer__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-left: 20px;
+    }
+
+    .footer__nav a {
+        font-size: 13px;
+        color: #ffffff;
+        text-decoration: none;
+        line-height: 1.4;
+        transition: opacity 0.2s;
+    }
+
+    .footer__nav a:hover { opacity: 0.6; }
+
+    .footer__address {
+        font-size: 13px;
+        color: #ffffff;
+        line-height: 1.8;
+        padding-left: 20px;
+    }
+
+    .footer__address a {
+        color: #ffffff;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .footer__social {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-left: 20px;
+    }
+
+    .footer__social a {
+        font-size: 13px;
+        color: #ffffff;
+        text-decoration: none;
+        transition: opacity 0.2s;
+    }
+
+    .footer__social a:hover { opacity: 0.6; }
+</style>

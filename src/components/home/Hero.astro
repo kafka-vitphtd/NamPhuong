@@ -1,0 +1,176 @@
+---
+import background from "../../assets/background/river-view.jpg"
+---
+
+<section class="hero" id="hero">
+    <div class="hero__bg">
+        <img src={background.src} alt="" class="hero__img" aria-hidden="true" />
+        <div class="hero__overlay"></div>
+    </div>
+
+    <div class="hero__content">
+
+        <h1 class="hero__title">
+        Where form
+        <br />
+        meets function
+        </h1>
+
+        <p class="hero__description">
+        Architecture that breathes with its environment.
+        Silent, bold, and radically honest.
+        </p>
+    </div>
+</section>
+
+<style>
+    .hero {
+        position: sticky;
+        z-index: 0;
+        width: 100%;
+        height: 100svh;
+        min-height: 600px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-top: 110px;
+        padding-left: 40px;
+    }
+
+    .hero__bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+    .hero__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transform: scale(1.04);
+        opacity: 0;  
+        animation: heroZoom 8s ease forwards, fadeIn 2.5s ease forwards; 
+    }
+    .hero__content {
+        position: relative;
+        z-index: 2;
+        padding-bottom: 12vh;
+        color: white;
+        max-width: 1200px;
+        margin: 0;
+        
+        width: 100%;
+        animation: fadeInUp 1.2s ease-out forwards;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .hero__title {
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 600;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+    }
+
+    .hero__description {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        max-width: 520px;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 48px;
+        font-weight: 400;
+    }
+
+    .hero__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+        160deg,
+        rgba(0, 0, 0, 0.10) 0%,
+        rgba(0, 0, 0, 0.55) 100%
+        );
+    }
+
+    .hero__scroll {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .hero__scroll-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+    }
+    .hero__scroll-line {
+        width: 40px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.4);
+        position: relative;
+        overflow: hidden;
+    }
+    .hero__scroll-line::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        animation: scrollLine 1.8s 1.2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+        0%   { left: -100%; }
+        50%  { left: 0%; }
+        100% { left: 100%; }
+    }
+    @keyframes slideUp {
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+        to { opacity: 1; }
+    }
+    @keyframes heroZoom {
+        to { transform: scale(1); }
+    }
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+<script>
+    const hero = document.getElementById('hero') as HTMLElement;
+    const heroBg = hero?.querySelector('.hero__bg') as HTMLElement;
+
+    if (hero && heroBg) {
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+            // Chặn giá trị âm để tránh lỗi giật hình khi cuộn lố ở đầu trang
+            const scrollY = Math.max(0, window.scrollY);
+
+            // Nhân với 0.5 để tạo hiệu ứng Parallax:
+            // - Scroll down: Ảnh trôi xuống nhẹ nhàng so với khung
+            // - Scroll up: Ảnh trôi ngược lên lại khớp 100% vị trí cũ
+            heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+
+            ticking = false;
+            });
+            ticking = true;
+        }
+        }, { passive: true });
+    }
+
+</script>

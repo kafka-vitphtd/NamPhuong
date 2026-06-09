@@ -1,0 +1,139 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Bold.woff2") format("woff2");  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Medium.woff2") format("woff2");  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Regular.woff2") format("woff2");  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------------------
+   TOKENS
+   ------------------------------------------ */
+
+:root {
+
+  /* TYPOGRAPHY */
+  --font-family-display: "Montserrat", sans-serif;
+  --font-family-body:    "Roboto", sans-serif;
+
+  /* Shorthand weight tokens */
+  --font-weight-regular:   400; /* Roboto-Regular   */
+  --font-weight-medium:    500; /* Roboto-Medium     */
+  --font-weight-semibold:  600; /* Montserrat-SemiBold */
+  --font-weight-bold:      700; /* Montserrat-Bold / Roboto-Bold */
+
+  --font-size-base: 16px;
+  --font-weight-base: 400;
+  --font-line-height-base: 16px;
+ 
+  --font-size-xs:  11px;
+  --font-size-sm:  12px;
+  --font-size-md:  14px;
+  --font-size-lg:  15px;
+  --font-size-xl:  15.44px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 18px;
+  --font-size-4xl: 19.44px;
+ 
+  --line-height-tight:   1.2;
+  --line-height-snug:    1.35;
+  --line-height-normal:  1.5;
+  --line-height-relaxed: 1.65;
+ 
+  --letter-spacing-tight:  -0.02em;
+  --letter-spacing-normal:  0em;
+  --letter-spacing-wide:    0.04em;
+  --letter-spacing-wider:   0.08em;
+  --letter-spacing-widest:  0.12em;
+
+  /* COLOR */
+  --color-text-primary:   #241f21;
+  --color-text-secondary: #ffffff;
+  --color-text-tertiary:  #e9e778;
+  --color-text-inverse:   #988f8b;
+
+  /* --- Color — Surface --- */
+  --color-surface-base:   #000000;
+  --color-surface-muted:  #f2efea;
+
+  /* --- Color — Semantic / Interactive (derived) --- */
+  --color-interactive-default:  #241f21;
+  --color-interactive-hover:    #3d3539;
+  --color-interactive-active:   #1a1618;
+  --color-interactive-disabled: #988f8b;
+  --color-interactive-focus-ring: #e9e778;
+
+  /* --- Spacing --- */
+  --space-1: 3px;
+  --space-2: 3.5px;
+  --space-3: 5px;
+  --space-4: 6px;
+  --space-5: 7px;
+  --space-6: 10px;
+  --space-7: 12px;
+  --space-8: 13px;
+ 
+  /* Extended spacing (multiples derived from base scale) */
+  --space-9:  16px;
+  --space-10: 20px;
+  --space-11: 24px;
+  --space-12: 32px;
+  --space-13: 40px;
+  --space-14: 48px;
+  --space-15: 64px;
+  --space-16: 80px;
+
+  /* --- Radius --- */
+  --radius-none: 0px;
+  --radius-xs:   8px;
+  --radius-sm:   12px;
+  --radius-full: 9999px;
+
+  /* --- Shadow --- */
+  --shadow-xs:  0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-sm:  0 1px 4px rgba(0, 0, 0, 0.10);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg:  0 8px 24px rgba(0, 0, 0, 0.14);
+  --shadow-xl:  0 16px 48px rgba(0, 0, 0, 0.16);
+
+  /* --- Motion --- */
+  --motion-duration-instant: 250ms;
+  --motion-duration-fast:    300ms;
+  --motion-duration-normal:  500ms;
+  --motion-duration-slow:    750ms;
+ 
+  --motion-ease-default:    cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-ease-out:        cubic-bezier(0, 0, 0.2, 1);
+  --motion-ease-in:         cubic-bezier(0.4, 0, 1, 1);
+  --motion-ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+
+}

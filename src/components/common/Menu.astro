@@ -1,0 +1,91 @@
+---
+const navLinks = [
+  { href: '/',           label: 'Trang chủ' },
+  { href: '/about',      label: 'Về chúng tôi' },
+  { href: '/projects',   label: 'Các dự án' },
+  { href: '/customers',  label: 'Khách hàng và đối tác' },
+  { href: '/investors',  label: 'Quan hệ cổ đông' },
+  { href: '/esg',        label: 'ESG' },
+  { href: '/news',       label: 'Tin tức' },
+];
+---
+<nav class="dropdown-panel" id="dropdown-panel" aria-hidden="true" aria-label="Main Navigation">
+  <ul class="dropdown-panel__links">
+    {navLinks.map((link, i) => (
+      <li>
+        <a href={link.href} class="drop-link" style={`--i:${i}`}>
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .dropdown-panel {
+    position: fixed;
+    top: 110px;
+    right: 0;
+    z-index: 210;
+    width: auto;
+    background: white;
+    padding: 50px 90px 70px 50px;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+    pointer-events: none;
+  }
+  .dropdown-panel.is-open {
+      clip-path: inset(0 0 0% 0);
+      pointer-events: auto;
+  }
+
+  .dropdown-panel__links {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .drop-link {
+    display: block;
+    font-family: var(--font-family-display, serif);
+    font-size: 32px;
+    font-weight: 500;
+    color: black;
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(42,38,32,0.18);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    filter: blur(8px);
+    transition: 
+        opacity 0.25s ease, 
+        transform 0.25s ease, 
+        filter 0.25s ease;
+  }
+  .dropdown-panel.is-open .drop-link {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    transition:
+        opacity 0.4s ease calc(var(--i) * 0.08s + 0.2s),
+        transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) calc(var(--i) * 0.08s + 0.2s),
+        filter 0.5s ease calc(var(--i) * 0.08s + 0.2s);
+  }
+
+  .drop-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 0; height: 2px;
+    background: black;
+    transition: width 0.35s cubic-bezier(0.76,0,0.24,1);
+  }
+  .drop-link:hover::after { width: 100%; }
+
+  .drop-link[aria-current="page"]::after {
+    width: 100%;
+  }
+</style>
